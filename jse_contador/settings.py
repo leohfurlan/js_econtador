@@ -91,8 +91,6 @@ DATABASES = {
         'NAME': 'jse_contador',
         'USER': 'root',  
         'PASSWORD': 'cadera3.0',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
     }
 }
 
