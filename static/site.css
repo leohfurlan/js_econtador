@@ -1,0 +1,19 @@
+tr:hover{
+    cursor: pointer;
+    background-color: #ccc;
+  }
+
+.titulo_pagina {
+  margin-top: 200px;
+  margin-bottom: 100px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+#propriedades_especificadas {
+  display: none;
+}
+
+#propriedades_especificadas.show {
+  display: block;
+}

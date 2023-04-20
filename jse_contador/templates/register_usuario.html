@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Crie sua conta{% endblock %}
+{% block content %}
+    <div class="page">
+        <div class="formLogin">
+            <h1>Crie sua conta</h1>
+            <form action="{% url 'register_usuario' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class="btn btn-primary" type="submit" value="Register"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}

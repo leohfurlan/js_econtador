@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}    
+{% csrf_token %}
+<!--Register--> 
+<div class="container py-5">
+	<h1>Clientes cadastrados</h1>
+	{% if clientes %}
+	<p></p>
+	<table class="table table-sm table-striped table-hover">
+		<thead class="thead-light">
+			<tr>
+				<th scope="col">CNPJ</th>
+				<th scope="col">RAZÃO SOCIAL</th>
+				<th scope="col">TELEFONE</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for cliente in clientes %}
+				<tr>
+					<th scope="row">{{cliente.id}}</th>
+                    <td><a href="{% url 'lista_documentos' cliente.id %}">{{cliente.cnpj}}</a></td>
+					<td><a href="{% url 'lista_documentos' cliente.id %}">{{cliente.razao_social}}</a></td>
+                    <td><a href="{% url 'lista_documentos' cliente.id %}">{{cliente.telefone}}</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% endif %}
+</div>
+{% endblock %}

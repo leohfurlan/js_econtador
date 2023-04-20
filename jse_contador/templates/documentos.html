@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}    
+{% csrf_token %}
+<!--Register--> 
+	<div class="container py-5">
+		<h1>Informações do cliente</h1>
+		{% if user.is_authenticated %}
+		<p> Olá {{ user.first_name }}!</p>
+			<ul>
+				<li>E-mail cadastrado: {{ user.email }}</li>
+			</ul>
+		<p><a href="{% url 'logout' %}">Sair</a></p>
+		
+		{% endif %}
+		<h4>Documentos do cliente</h4>
+		{% if documentos %}
+		
+		<table class="table table-sm table-striped table-hover">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">NOME DO ARQUIVO</th>
+					<th scope="col">ARQUIVO</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for arquivo in documentos %}
+					{% if arquivo %}
+					<tr>
+						<th scope="row">{{arquivo.nome_documento}}</th>
+						<td><a href="{% url 'download' arquivo.id %}">{{arquivo.arquivo}}</a>
+						</td>
+					</tr>
+					{% else %}
+					<tr>Não há arquivos disponíveis para download.</tr>
+					{% endif %}
+				{% endfor %}
+			</tbody>
+		</table>
+		{% endif %}
+	</div>
+
+{% endblock %}

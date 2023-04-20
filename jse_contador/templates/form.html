@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Registre o seu usuário {% endblock %}
+{% block content %} 
+<div class="container">
+    <form method="POST" class="formLogin">
+        {% csrf_token %}
+        <h1>Cadastrar usuário</h1>
+		<p>Digite os seus dados de acesso no campo abaixo.</p>
+        {{ form.as_p }}
+        <button type="submit" value="next" class="btn"> Cadastrar usuário </button>
+    </form>
+</div>
+{% endblock %}
