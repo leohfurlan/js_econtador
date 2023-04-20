@@ -89,6 +89,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'jse_contador',
+        'HOST': '127.0.0.1',
         'USER': 'root',  
         'PASSWORD': 'cadera3.0',
     }
