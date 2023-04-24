@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'jse_contador.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'jse_contador',
+        'NAME': 'jsecontador',
         'HOST': '127.0.0.1',
         'USER': 'root',  
         'PASSWORD': 'cadera3.0',
