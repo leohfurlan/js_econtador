@@ -12,7 +12,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+import environ
 
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*i*ahvfk9og1i91mga))$ytqpza^ngsgan4mv#56i6al^(1j)s'
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -45,7 +48,8 @@ INSTALLED_APPS = [
     'tempus_dominus',
     'widget_tweaks',
     'crispy_forms',
-    'crispy_bootstrap4'
+    'crispy_bootstrap4',
+    'whitenoise.runserver_nostatic'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -87,11 +91,12 @@ WSGI_APPLICATION = 'jse_contador.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'jsecontador',
-        'HOST': '127.0.0.1',
-        'USER': 'root',  
-        'PASSWORD': 'cadera3.0',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', 
+        'NAME': env("DB_NAME"),
+        'HOST': env("DB_HOST"),
+        'USER': env("DB_USER"),  
+        'PASSWORD': env("DB_PASSWORD"),
+        'PORT': env("DB_PORT"),
     }
 }
 
@@ -150,4 +155,3 @@ LOGOUT_REDIRECT_URL = '/accounts/login'
 
 import django_heroku
 django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode'] 
